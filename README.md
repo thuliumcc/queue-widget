@@ -87,7 +87,7 @@ $configuration = array(
     'password' => 'password',
     'permitted_queue_ids' => array(153, 231),
     'queue_names' => array(
-        152 => 'Infolinia',
+        153 => 'Infolinia',
         231 => 'Wsparcie Techniczne'
     ),
     'cache' => array(
