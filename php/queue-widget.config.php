@@ -4,10 +4,10 @@ $configuration = array(
     'api_url' => 'http://your_host_name.callcenter.pl/api',
     'user' => 'user',
     'password' => 'password',
-    'permitted_queue_ids' => array(1, 2),
+    'permitted_queue_ids' => array(153, 231),
     'queue_names' => array(
-        1 => 'Infolinia',
-        2 => 'Wsparcie Techniczne'
+        153 => 'Infolinia',
+        231 => 'Wsparcie Techniczne'
     ),
     'cache' => array(
         'enabled' => true,
