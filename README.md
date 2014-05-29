@@ -15,7 +15,7 @@ Widget składa się z dwóch części:
  
  Na stronie należy umieścić element *div* o strukturze:
  ```html
- <div class="thulium-queue-widget" data-queue-id="2" data-interval="6" data-url="http://host/queue-widget/php/queue-widget.php">
+ <div class="thulium-queue-widget" data-queue-id="231" data-interval="6" data-url="http://host/queue-widget/php/queue-widget.php">
      <div class="queue-widget-logo"></div>
      <div class="queue-widget-row">
          <div class="queue-label-title queue-title">Kolejka</div>
