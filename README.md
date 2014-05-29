@@ -1,8 +1,8 @@
 Thulium Queue Widget
 ====================
 
-Widget do umieszczenia na stronie www, współpracuje z kolejkami systemu [Thulium CC](http://callcenter.pl/) pokazując:
- * ilość oczekujących w kolejce 
+Widget do umieszczenia na stronie www, współpracuje z kolejkami systemu [Thulium Call Center](http://callcenter.pl/) pokazując:
+ * liczba osób oczekujących w kolejce 
  * przewidywany czas oczekiwania na połączenie z konsultantem
 
 Instalacja
@@ -75,3 +75,28 @@ Dostępne opcje pamięci podręcznej:
 - `server` - serwer memcache    
 - `port` - port memcache  
         
+Przykładowa konfiguracja
+------------------------
+
+Zawartość pliku **queue-widget.config.php**:
+
+```php
+$configuration = array(
+    'api_url' => 'http://twoja_domena.callcenter.pl/api',
+    'user' => 'user',
+    'password' => 'password',
+    'permitted_queue_ids' => array(1, 2),
+    'queue_names' => array(
+        1 => 'Infolinia',
+        2 => 'Wsparcie Techniczne'
+    ),
+    'cache' => array(
+        'enabled' => true,
+        'clean_interval' => 30,
+        'class' => 'MemcacheCache',
+        'class_path' => __DIR__,
+        'server' => 'localhost',
+        'port' => '11211'
+    )
+);
+```
