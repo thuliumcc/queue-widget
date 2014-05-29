@@ -1,0 +1,41 @@
+.queue-widget-logo {
+    background-image: url(data:image/png;base64,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);
+    height: 28px;
+    width: 140px;
+    display: inline-block;
+}
+
+.thulium-queue-widget {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    width: 200px;
+    background-color: white;
+}
+
+.queue-title {
+    border-bottom: 1px solid;
+}
+
+.queue-value {
+    color: black;
+}
+
+.queue-widget-row {
+    margin: 5px 0;
+    display: inline-block;
+    width: 140px;
+}
+
+.queue-label-title {
+    color: #2C80BE;
+}
+
+.queue-approx-wait-title {
+    color: #FE2824;
+}
+
+.queue-waiting-count-title {
+    color: #4FB300;
+}
