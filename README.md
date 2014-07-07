@@ -2,7 +2,7 @@ Thulium Queue Widget
 ====================
 
 Widget do umieszczenia na stronie www, współpracuje z kolejkami systemu [Thulium Call Center](http://callcenter.pl/) pokazując:
- * liczba osób oczekujących w kolejce 
+ * liczbę osób oczekujących w kolejce 
  * przewidywany czas oczekiwania na połączenie z konsultantem
 
 Instalacja
@@ -11,7 +11,7 @@ Instalacja
 Instalacja polega na skopiowaniu plików z katalogu *widget* oraz *php* do lokalizacji na serwerze.
 
 Widget składa się z dwóch części:
- - **klienckiej** - służącej do umieszczenia na stronie www i wyświetlającej dane o kolejce.
+ - część **kliencka** - służącej do umieszczenia na stronie www i wyświetlającej dane o kolejce.
  
  Na stronie należy umieścić element *div* o strukturze:
  ```html
@@ -41,9 +41,9 @@ Widget składa się z dwóch części:
  ```
 *Podane ścieżki mogą wymagać dostosowania w zależności od położenia plików na serwerze.*
 
-*Widget nie wymaga dodatkowych zależności (bibliotek JS), działa pod wszystkimi popularnymi przeglądarkami.*
+*Widget nie wymaga dodatkowych zależności (bibliotek JS), współpracuje ze  wszystkimi popularnymi przeglądarkami.*
   
- - **serwerowej** - zapewniającą bezpośrednią komunikację z systemem Thulium.
+ - część **serwerowa** - zapewniającą bezpośrednią komunikację z systemem Thulium.
  
 Część serwerowa wymaga PHP (5.3 lub wyższego) oraz opcjonalnie biblioteki [memcache](http://www.memcached.org/).
  
@@ -59,7 +59,7 @@ Opcje widgetu definiuje się poprzez atrybuty *data* umieszczonego na stronie e
 - `data-url` - adres części serwerowej (pliku **queue-widget.php**) widgetu
 
 Dodatkowo należy ustawić opcje połączenia Twojego serwera z systemem Thulium (plik **queue-widget.config.php**):
-- `api_url` - adres api systemu Thulium
+- `api_url` - adres API systemu Thulium
 - `user` - nazwa użytkownika 
 - `password` - hasło użytkownika 
    (Aby uzyskać nazwę użytkownika i hasło należy skontaktować się z serwisem Thulium)  
