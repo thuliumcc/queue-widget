@@ -2,6 +2,22 @@
 
 require __DIR__ . DIRECTORY_SEPARATOR . 'queue-widget.config.php';
 
+if (!function_exists('json_last_error_msg')) {
+    function json_last_error_msg()
+    {
+        static $errors = array(
+            JSON_ERROR_NONE => null,
+            JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
+            JSON_ERROR_STATE_MISMATCH => 'Underflow or the modes mismatch',
+            JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',
+            JSON_ERROR_SYNTAX => 'Syntax error, malformed JSON',
+            JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded'
+        );
+        $error = json_last_error();
+        return array_key_exists($error, $errors) ? $errors[$error] : "Unknown error ({$error})";
+    }
+}
+
 QueueWidgetDataSource::serve($configuration);
 
 class QueueWidgetDataSource
@@ -99,7 +115,7 @@ class QueueWidgetDataSource
 
     private function formatTime($approx_wait_time)
     {
-        return ($approx_wait_time) ? : '00:00:00';
+        return ($approx_wait_time) ?: '00:00:00';
     }
 
     private function parseRetrievedData($data)
