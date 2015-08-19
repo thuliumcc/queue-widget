@@ -76,20 +76,26 @@ class QueueWidgetDataSource
 
     private function fetchDataFromThulium($url)
     {
-        $headers = $this->getHeaders(array(
-            "Accept" => "text/html",
-            "Connection" => "Close",
-            "Authorization" => "Basic " . $this->authBasicHash
-        ));
-        $context = stream_context_create(array(
-            'http' => array(
-                'header' => $headers,
-                'method' => 'GET',
-                'timeout' => 5.0,
-                'ignore_errors' => true
-            )
-        ));
-        return file_get_contents($url, null, $context);
+        $headers = array(
+            "Accept: text/html",
+            "Connection: Close",
+            "Authorization: Basic " . $this->authBasicHash
+        );
+
+        $curlHandle = curl_init();
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 5);
+        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, false);
+
+        $result = curl_exec($curlHandle);
+        if ($result === FALSE) {
+            throw new Exception(curl_error($curlHandle));
+        }
+        curl_close($curlHandle);
+        return $result;
     }
 
     private function getQueueWaitingStatsServiceUrl()
@@ -125,15 +131,6 @@ class QueueWidgetDataSource
             throw new Exception('Error parsing data (' . json_last_error_msg() . '). Data: ' . $data);
         }
         return $parsedData;
-    }
-
-    private function getHeaders($headers)
-    {
-        $headersString = '';
-        foreach ($headers as $name => $value) {
-            $headersString .= "$name: $value\r\n";
-        }
-        return $headersString;
     }
 
     private function getWaitingStatsFromApiOrCache()
